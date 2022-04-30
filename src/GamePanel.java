@@ -10,7 +10,7 @@ public class GamePanel extends JPanel implements ActionListener
 	static final int SCREEN_HEIGHT = 300;
 	static final int UNIT_SIZE = 10;			// 10 is a good size per each unit
 	static final int GAME_UNITS = (SCREEN_WIDTH * SCREEN_HEIGHT ) / UNIT_SIZE;
-	static final int DELAY = 100;
+	static int delay = 100;
 	final int x[] = new int[GAME_UNITS]; 	// holds all units of the snake/head on the x axis
 	final int y[] = new int[GAME_UNITS]; 	// holds all units of the snake/head on the y axis
 	int startSnakeLength = 3;						// starting length of snake is 3 units
@@ -18,7 +18,7 @@ public class GamePanel extends JPanel implements ActionListener
 	int appleX;													// position of apple on x axis
 	int appleY;													// position of apply on y axis
 	char direction = 'D';									// initial direction of snake when game starts
-	private Image ball;
+	private Image body;
 	private Image apple;
 	private Image head;
 	boolean running = false;
@@ -33,15 +33,15 @@ public class GamePanel extends JPanel implements ActionListener
 		this.setFocusable (true);
 		this.addKeyListener (new MyKeyAdapter ());
 		startGame ();
+		loadImages ();
 	}
 	
 	public void startGame()
 	{
 		newApple ();
 		running	 = true;
-		timer = new Timer(DELAY, this);
+		timer = new Timer(delay, this);
 		timer.start ();
-		//loadImages ();
 	}
 	
 	public void paintComponent(Graphics g)
@@ -56,18 +56,16 @@ public class GamePanel extends JPanel implements ActionListener
 	{
 		if (running)
 		{
-			g.setColor (Color.GREEN);
-			g.fillOval (appleX, appleY, UNIT_SIZE, UNIT_SIZE);
+			
+			g.drawImage (apple, appleX, appleY, this);
 			for (int i = 0; i < startSnakeLength; i++)
 			{
 				if (i == 0)
 				{
-					g.setColor (Color.RED);
-					g.fillRect (x[i], y[i], UNIT_SIZE, UNIT_SIZE);
+					g.drawImage (head, x[i], y[i], this);
 				} else
 				{
-					g.setColor (Color.GREEN);
-					g.fillRect (x[i], y[i], UNIT_SIZE, UNIT_SIZE);
+					g.drawImage (body, x[i], y[i], this);
 				}
 			}
 			g.setColor (Color.WHITE);
@@ -84,7 +82,7 @@ public class GamePanel extends JPanel implements ActionListener
 	private void loadImages() {
 		
 		ImageIcon iid = new ImageIcon("src/resources/dot.png");
-		ball = iid.getImage();
+		body = iid.getImage();
 		
 		ImageIcon iia = new ImageIcon("src/resources/apple.png");
 		apple = iia.getImage();
