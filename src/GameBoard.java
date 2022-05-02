@@ -1,5 +1,6 @@
 import javax.swing.*;
 
+// Set up of GameBoard that adds GamePanel()
 public class GameBoard extends JFrame
 {
 	GameBoard()
@@ -7,11 +8,9 @@ public class GameBoard extends JFrame
 		this.add(new GamePanel());
 		this.setTitle("SNAKE by Charles Maru");
 		this.setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE);
-		this.setResizable (false);;
+		this.setResizable (false);
 		this.pack();
 		this.setVisible (true);
 		this.setLocationRelativeTo (null);
-		
-		;
 	}
 }
