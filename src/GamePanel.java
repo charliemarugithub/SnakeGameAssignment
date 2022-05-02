@@ -8,9 +8,9 @@ public class GamePanel extends JPanel implements ActionListener
 {
 	static final int SCREEN_WIDTH = 300;
 	static final int SCREEN_HEIGHT = 300;
-	static final int UNIT_SIZE = 10;			// 10 is a good size per each unit
+	static final int UNIT_SIZE = 15;			// 10 is a good size per each unit
 	static final int GAME_UNITS = (SCREEN_WIDTH * SCREEN_HEIGHT ) / UNIT_SIZE;
-	static int delay = 100;
+	static int delay = 125;
 	final int x[] = new int[GAME_UNITS]; 	// holds all units of the snake/head on the x axis
 	final int y[] = new int[GAME_UNITS]; 	// holds all units of the snake/head on the y axis
 	int startSnakeLength = 3;						// starting length of snake is 3 units
@@ -84,10 +84,10 @@ public class GamePanel extends JPanel implements ActionListener
 		ImageIcon iid = new ImageIcon("src/resources/dot.png");
 		body = iid.getImage();
 		
-		ImageIcon iia = new ImageIcon("src/resources/apple.png");
+		ImageIcon iia = new ImageIcon("src/resources/apple2.png");
 		apple = iia.getImage();
 		
-		ImageIcon iih = new ImageIcon("src/resources/head.png");
+		ImageIcon iih = new ImageIcon("src/resources/head2.png");
 		head = iih.getImage();
 	}
 	
